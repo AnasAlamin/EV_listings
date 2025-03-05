@@ -4,6 +4,7 @@ import { VehicleCard } from './components/VehicleCard'
 import { Pagination } from './components/Paginations'
 import { SearchFilters } from './components/SearchFilters'
 import Head from 'next/head'
+import Layout from './components/Layout'
 
 type HomeProps = {
   searchParams: Promise<{
@@ -25,7 +26,7 @@ export default async function Home({ searchParams }: HomeProps) {
   })
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Electric Vehicles - Home</title>
         <meta
@@ -57,6 +58,6 @@ export default async function Home({ searchParams }: HomeProps) {
           </>
         )}
       </main>
-    </>
+    </Layout>
   )
 }

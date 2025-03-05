@@ -1,4 +1,5 @@
 import Carousel from '@/app/components/Carousel'
+import Layout from '@/app/components/Layout'
 import { getVehicleById } from '@/app/lib/actions'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -23,7 +24,7 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>{`${vehicle.brand} ${vehicle.model} - Details`}</title>
         <meta
@@ -121,6 +122,6 @@ export default async function VehiclePage({ params }: VehiclePageProps) {
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   )
 }
