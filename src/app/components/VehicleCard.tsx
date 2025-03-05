@@ -12,7 +12,10 @@ interface VehicleCardProps {
 }
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
-  const vehicleId = `${vehicle.brand}-${vehicle.model}`.toLowerCase()
+  const vehicleId =
+    `${vehicle.brand}_${vehicle.model}`
+      .toLowerCase()
+      .replace(/\s+/g, '')      
 
   return (
     <Link href={`/vehicles/${vehicleId}`}>

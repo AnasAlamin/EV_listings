@@ -14,12 +14,13 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const page = parseInt(searchParams.page || '1')
-  const [field, value] = (searchParams.filter || '').split(':')
+  const params = await searchParams
+  const page = parseInt(params.page || '1')
+  const [field, value] = (params.filter || '').split(':')
 
   const { vehicles, total, totalPages } = await getVehicles({
-    query: searchParams.query,
-    sort: searchParams.sort as any,
+    query: params.query,
+    sort: params.sort as any,
     filter: field ? { field: field as any, value } : undefined,
     page,
     limit: 12
