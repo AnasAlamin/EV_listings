@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aampere EV Marketplace
+
+A modern, performant electric vehicle marketplace built with Next.js and TailwindCSS.
+
+## Features
+
+- 🚗 Vehicle listing with search, filter, and sort functionality
+- 📱 Responsive design for all screen sizes
+- ⚡️ Fast page loads with Next.js
+- 🎨 Beautiful UI with shadcn/ui components
+- ♿️ Accessible design with ARIA labels and keyboard navigation
+- 🔍 SEO optimized with metadata
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
+## Project Structure
+
+- `/app` - Next.js app directory
+  - `/components` - Reusable UI components
+  - `/lib` - Utility functions and data
+  - `/types` - TypeScript type definitions
+  - `/vehicles` - Vehicle detail pages
+
+## Performance Optimizations
+
+- Image optimization with next/image
+- Client-side navigation with next/link
+- Component-level code splitting
+- Efficient state management with URL parameters
+- Responsive images and lazy loading
+
+## Accessibility Features
+
+- Semantic HTML structure
+- ARIA labels for interactive elements
+- Keyboard navigation support
+- Color contrast compliance
+- Screen reader friendly content
+
+## Testing
+
+To run tests:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Docker
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Build and run the application using Docker:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+docker build -t aampere-ev .
+docker run -p 3000:3000 aampere-ev
+```
 
-## Learn More
+## Deploymeent
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app has been deployed on Vercel, any commit on main will trigger a new build on Vercel. [View Here](https://ev-listings-zh4j.vercel.app/)
