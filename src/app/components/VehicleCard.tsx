@@ -40,7 +40,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
             {vehicle.brand} {vehicle.model}
           </h3>
           <p className="text-2xl font-bold mb-4">
-            ${vehicle.price.toLocaleString()}
+            € {vehicle.price.toLocaleString()}
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-2">
