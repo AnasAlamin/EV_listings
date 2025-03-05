@@ -6,16 +6,14 @@ import { Badge } from '@/components/ui/badge'
 import { Battery, Gauge, Timer, Zap } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { normalizeString } from '@/lib/utils'
 
 interface VehicleCardProps {
   vehicle: Vehicle
 }
 
 export function VehicleCard({ vehicle }: VehicleCardProps) {
-  const vehicleId =
-    `${vehicle.brand}_${vehicle.model}`
-      .toLowerCase()
-      .replace(/\s+/g, '')      
+  const vehicleId = normalizeString(`${vehicle.brand}_${vehicle.model}_${vehicle.year}_${vehicle.location}`)
 
   return (
     <Link href={`/vehicles/${vehicleId}`}>

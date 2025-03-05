@@ -1,3 +1,4 @@
+import { normalizeString } from '@/lib/utils'
 import { SearchParams, Vehicle, VehicleListResponse } from '../types'
 import { vehicleData } from './data'
 
@@ -63,11 +64,14 @@ export async function getVehicles(
 }
 
 export async function getVehicleById(id: string): Promise<Vehicle | null> {
-  const [brand, model] = id.split('_')
+  const [brand, model, year, location] = id.split('_')
+
   const vehicle = vehicleData.data.find(
     (vehicle) =>
-      vehicle.brand.toLowerCase().replace(/\s+/g, '') === brand.toLowerCase() &&
-      vehicle.model.toLowerCase().replace(/\s+/g, '') === model.toLowerCase()
+      normalizeString(vehicle.brand) === normalizeString(brand) &&
+      normalizeString(vehicle.model) === normalizeString(model) &&
+      vehicle.year.toString() === year &&
+      normalizeString(vehicle.location) === normalizeString(location)
   )
   return vehicle || null
 }
