@@ -6,13 +6,16 @@ import { Battery, Gauge, Timer, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-export default async function VehiclePage({
-  params
-}: {
-  params: { id: string }
-}) {
-  const { id } = await params;
-  const vehicle = await getVehicleById(id);
+type VehiclePageProps = {
+  params: Promise<{
+    id: string
+  }>
+}
+
+export default async function VehiclePage({ params }: VehiclePageProps) {
+  const { id } = await params
+
+  const vehicle = await getVehicleById(id)
 
   if (!vehicle) {
     notFound()

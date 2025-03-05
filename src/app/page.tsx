@@ -4,22 +4,19 @@ import { VehicleCard } from './components/VehicleCard'
 import { Pagination } from './components/Paginations'
 import { SearchFilters } from './components/SearchFilters'
 
-interface HomeProps {
-  searchParams: {
-    query?: string
-    sort?: string
-    filter?: string
-    page?: string
-  }
+type HomeProps = {
+  searchParams: Promise<{
+    [key: string]: string | string[] | number | undefined
+  }>
 }
 
 export default async function Home({ searchParams }: HomeProps) {
   const params = await searchParams
-  const page = parseInt(params.page || '1')
-  const [field, value] = (params.filter || '').split(':')
+  const page = parseInt(params.page as string|| '1')
+  const [field, value] = (params.filter as string || '').split(':')
 
   const { vehicles, total, totalPages } = await getVehicles({
-    query: params.query,
+    query: params.query as string,
     sort: params.sort as any,
     filter: field ? { field: field as any, value } : undefined,
     page,
