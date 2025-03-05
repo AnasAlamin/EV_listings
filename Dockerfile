@@ -1,33 +1,23 @@
-# Base image
-FROM node:18-alpine AS builder
+# Use the official Node.js image as the base image
+FROM node:18-alpine
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy package.json and lock file
-COPY package.json package-lock.json ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
-# Copy the entire project
+# Copy the rest of the application code
 COPY . .
 
-# Build the Next.js app
+# Build the Next.js application
 RUN npm run build
 
-# Production image
-FROM node:18-alpine AS runner
-WORKDIR /app
-
-# Install only production dependencies
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-
-# Expose the port
+# Expose the port the app runs on
 EXPOSE 3000
 
-# Start the app
-CMD ["npm", "run", "start"]
+# Start the Next.js application
+CMD ["npm", "start"]
